@@ -15,14 +15,23 @@
         left: 0;
         display: block;
       }
+      a {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+        z-index: 10;
+        font-family: monospace;
+        color: #f8f;
+      }
     </style>
   </head>
   <body>
+    <a href="https://github.com/potch/conwar">code on GitHub</a>
     <script src="https://rawgithub.com/mrdoob/stats.js/master/build/stats.min.js"></script>
     <script>
       (function() {
 
-        var speed = 50;
+        var speed = 20;
 
         var sizeX = 200;
         var sizeY = 100;
@@ -64,9 +73,11 @@
         var ticks = 0;
         var stime = Date.now();
 
+        var toDraw = [];
+        var toKill = [];
+        var toSpawn = [];
+
         function step() {
-          var toKill = [];
-          var toSpawn = [];
 
           top = Infinity;
           bottom = -Infinity;
@@ -94,12 +105,15 @@
             }
             if (neighbors < 2 || neighbors > 3) {
               toKill.push(loc);
+            } else {
+              toDraw.push(loc);
             }
           }
-          toKill.forEach(function(p) {
-            delete board[p];
-          });
-          toSpawn.forEach(function(p) {
+          while(toKill.length) {
+            delete board[toKill.pop()];
+          }
+          while(toSpawn.length) {
+            var p = toSpawn.pop();
             var pair = p.split(',');
             top = Math.min(pair[1], top);
             right = Math.max(pair[0], right);
@@ -107,7 +121,8 @@
             left = Math.min(pair[0], left);
 
             board[p] = 1;
-          });
+            toDraw.push(p);
+          }
         }
 
         function countNeighbors(p) {
@@ -294,8 +309,9 @@
           gridCtx.stroke();
 
           ctx.fillStyle = '#fff';
-          for (pos in board) {
-            var pair = pos.split(',');
+
+          while (toDraw.length) {
+            var pair = toDraw.pop().split(',');
             ctx.fillRect(pair[0], pair[1],1,1);
           }
 
