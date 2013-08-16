@@ -182,8 +182,8 @@
         var list = document.querySelector('#list');
 
         for (var i=0; i<2; i++) {
-          var x = Math.random()*400-200|0;
-          var y = Math.random()*400-200|0;
+          var x = Math.random()*sizeX*2-sizeX|0;
+          var y = Math.random()*sizeY*2-sizeY|0;
           board[[x,y].join(',')] = 1;
           board[[x+1,y].join(',')] = 1;
           board[[x+1,y+1].join(',')] = 1;
@@ -191,8 +191,8 @@
           board[[x+1,y+2].join(',')] = 1;
         }
         for (var i=0; i<20; i++) {
-          var x = Math.random()*200-100|0;
-          var y = Math.random()*200-100|0;
+          var x = Math.random()*sizeX*2-sizeX|0;
+          var y = Math.random()*sizeY*2-sizeY|0;
           if (Math.random() > .75) {
             board[[x,y].join(',')] = 1;
             board[[x+1,y].join(',')] = 1;
