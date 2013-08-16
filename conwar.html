@@ -166,7 +166,7 @@
         var stat = document.querySelector('#stat');
         var list = document.querySelector('#list');
 
-        for (var i=0; i<10; i++) {
+        for (var i=0; i<2; i++) {
           var x = Math.random()*400-200|0;
           var y = Math.random()*400-200|0;
           board[[x,y].join(',')] = 1;
@@ -175,35 +175,35 @@
           board[[x+2,y+1].join(',')] = 1;
           board[[x+1,y+2].join(',')] = 1;
         }
-        // for (var i=0; i<20; i++) {
-        //   var x = Math.random()*200-100|0;
-        //   var y = Math.random()*200-100|0;
-        //   if (Math.random() > .75) {
-        //     board[[x,y].join(',')] = 1;
-        //     board[[x+1,y].join(',')] = 1;
-        //     board[[x+2,y].join(',')] = 1;
-        //     board[[x+2,y+1].join(',')] = 1;
-        //     board[[x+1,y+2].join(',')] = 1;
-        //   } else if (Math.random() > .5) {
-        //     board[[x,y].join(',')] = 1;
-        //     board[[x+1,y].join(',')] = 1;
-        //     board[[x+2,y].join(',')] = 1;
-        //     board[[x,y+1].join(',')] = 1;
-        //     board[[x+1,y+2].join(',')] = 1;
-        //   } else if (Math.random() > .25) {
-        //     board[[x,y+2].join(',')] = 1;
-        //     board[[x+1,y+2].join(',')] = 1;
-        //     board[[x+2,y+2].join(',')] = 1;
-        //     board[[x+2,y+1].join(',')] = 1;
-        //     board[[x+1,y].join(',')] = 1;
-        //   } else {
-        //     board[[x,y+2].join(',')] = 1;
-        //     board[[x+1,y+2].join(',')] = 1;
-        //     board[[x+2,y+2].join(',')] = 1;
-        //     board[[x,y+1].join(',')] = 1;
-        //     board[[x+1,y].join(',')] = 1;
-        //   }
-        // }
+        for (var i=0; i<20; i++) {
+          var x = Math.random()*200-100|0;
+          var y = Math.random()*200-100|0;
+          if (Math.random() > .75) {
+            board[[x,y].join(',')] = 1;
+            board[[x+1,y].join(',')] = 1;
+            board[[x+2,y].join(',')] = 1;
+            board[[x+2,y+1].join(',')] = 1;
+            board[[x+1,y+2].join(',')] = 1;
+          } else if (Math.random() > .5) {
+            board[[x,y].join(',')] = 1;
+            board[[x+1,y].join(',')] = 1;
+            board[[x+2,y].join(',')] = 1;
+            board[[x,y+1].join(',')] = 1;
+            board[[x+1,y+2].join(',')] = 1;
+          } else if (Math.random() > .25) {
+            board[[x,y+2].join(',')] = 1;
+            board[[x+1,y+2].join(',')] = 1;
+            board[[x+2,y+2].join(',')] = 1;
+            board[[x+2,y+1].join(',')] = 1;
+            board[[x+1,y].join(',')] = 1;
+          } else {
+            board[[x,y+2].join(',')] = 1;
+            board[[x+1,y+2].join(',')] = 1;
+            board[[x+2,y+2].join(',')] = 1;
+            board[[x,y+1].join(',')] = 1;
+            board[[x+1,y].join(',')] = 1;
+          }
+        }
 
         var requestFrame = window.webkitRequestAnimationFrame ||
                            window.requestAnimationFrame ||
