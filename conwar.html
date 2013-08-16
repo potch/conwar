@@ -30,11 +30,11 @@
     <script src="https://rawgithub.com/mrdoob/stats.js/master/build/stats.min.js"></script>
     <script>
       (function() {
+        var params = queryParams(window.location.href);
+        var speed = params.speed || 20;
 
-        var speed = 20;
-
-        var sizeX = 200;
-        var sizeY = 100;
+        var sizeX = params.sizeX || 200;
+        var sizeY = params.sizeY || 100;
 
         var board = {};
 
@@ -182,8 +182,8 @@
         var list = document.querySelector('#list');
 
         for (var i=0; i<2; i++) {
-          var x = Math.random()*400-200|0;
-          var y = Math.random()*400-200|0;
+          var x = Math.random()*sizeX*2-sizeX|0;
+          var y = Math.random()*sizeY*2-sizeY|0;
           board[[x,y].join(',')] = 1;
           board[[x+1,y].join(',')] = 1;
           board[[x+1,y+1].join(',')] = 1;
@@ -191,8 +191,8 @@
           board[[x+1,y+2].join(',')] = 1;
         }
         for (var i=0; i<20; i++) {
-          var x = Math.random()*200-100|0;
-          var y = Math.random()*200-100|0;
+          var x = Math.random()*sizeX*2-sizeX|0;
+          var y = Math.random()*sizeY*2-sizeY|0;
           if (Math.random() > .75) {
             board[[x,y].join(',')] = 1;
             board[[x+1,y].join(',')] = 1;
@@ -340,6 +340,22 @@
 
         step();
         tick();
+        
+        function queryParams (url) {
+          // Isolate the querystring.
+          if (url.indexOf('?') >= 0) {
+            url = url.split('?')[1];
+          }
+          var obj = {};
+          var pairs = url.split('&');
+      
+          pairs.forEach(function(p) {
+            p = p.split('=');
+            obj[p[0]] = typeof p[1] === 'undefined' ? true: p[1];
+          });
+      
+          return obj;
+        }
       })();
     </script>
   </body>
