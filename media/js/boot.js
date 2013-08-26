@@ -16,7 +16,7 @@
             console.log('rehydrating ' + s);
             addScript(s);
         });
-        setTimeout(after, 0);
+        window.addEventListener('load', after);
     };
 
     addScript('config');
