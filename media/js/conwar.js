@@ -11,11 +11,15 @@ define('conwar', ['life', 'canvas'], function() {
     life.set(2, 1, {bias: 1});
     life.set(1, 0, {bias: 1});
 
-    life.set(22, 2, {bias: 2, speed: 1});
-    life.set(23, 2, {bias: 2, speed: 1});
-    life.set(24, 2, {bias: 2, speed: 1});
-    life.set(22, 1, {bias: 2, speed: 1});
-    life.set(23, 0, {bias: 2, speed: 1});
+    life.set(20, 0, {bias: 2, speed: 1});
+    life.set(21, 0, {bias: 2, speed: 1});
+    life.set(22, 0, {bias: 2, speed: 1});
+    life.set(20, 1, {bias: 2, speed: 1});
+    life.set(23, 1, {bias: 2, speed: 1});
+    life.set(20, 2, {bias: 2, speed: 1});
+    life.set(20, 3, {bias: 2, speed: 1});
+    life.set(21, 4, {bias: 2, speed: 1});
+    life.set(23, 4, {bias: 2, speed: 1});
 
     var c = new Canvas(400, 400);
 

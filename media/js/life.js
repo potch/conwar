@@ -38,14 +38,6 @@ define('life', [], function () {
     }
 
     function offspring (cells) {
-        function inherit(prop, def) {
-            if (cells[0][prop] === cells[1][prop] &&
-                cells[1][prop] === cells[2][prop]) {
-                return cells[0][prop];
-            } else {
-                return def;
-            }
-        }
         return {
             bias: inheritBias(cells),
             speed: inheritSpeed(cells)
