@@ -1,0 +1,6 @@
+boot([
+    'amd',
+    'life',
+    'canvas',
+    'conwar'
+]);
