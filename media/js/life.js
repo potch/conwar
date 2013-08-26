@@ -9,6 +9,8 @@ define('life', [], function () {
 
     var currentGen = [];
 
+    var speedLimit = 16;
+
     function advance () {
         var newGen = [];
         for (var i = 0; i < width * height; i++) {
@@ -61,7 +63,7 @@ define('life', [], function () {
             cells[1].speed === cells[2].speed) {
             return minSpeed;
         } else {
-            return Math.min(minSpeed * 2, 8);
+            return Math.min(minSpeed * 2, speedLimit);
         }
     }
 
@@ -104,7 +106,7 @@ define('life', [], function () {
     function set (x, y, v) {
         var o = {
             bias: v.bias || 0,
-            speed: v.speed || 8
+            speed: v.speed || speedLimit
         };
         currentGen[map(x, y)] = o;
     }
