@@ -120,6 +120,7 @@ define('life', [], function () {
         get board () { return currentGen },
         get: get,
         set: set,
+        get generation () { return generation },
         setDimensions: setDimensions
     };
 
