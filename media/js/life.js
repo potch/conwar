@@ -47,9 +47,30 @@ define('life', [], function () {
             }
         }
         return {
-            bias: inherit('bias', 0),
-            speed: inherit('speed', 8)
+            bias: inheritBias(cells),
+            speed: inheritSpeed(cells)
         };
+    }
+
+    function inheritBias (cells) {
+        if (cells[0].bias === cells[1].bias &&
+            cells[1].bias === cells[2].bias) {
+            return cells[0].bias;
+        } else {
+            return 1;
+        }
+    }
+
+    function inheritSpeed (cells) {
+        var minSpeed = Math.min(cells[0].speed,
+                                cells[1].speed,
+                                cells[2].speed);
+        if (cells[0].speed === cells[1].speed &&
+            cells[1].speed === cells[2].speed) {
+            return minSpeed;
+        } else {
+            return Math.min(minSpeed * 2, 8);
+        }
     }
 
     function neighbors (x, y) {
@@ -102,7 +123,7 @@ define('life', [], function () {
 
     return {
         advance: advance,
-        get board () { return boards[generation % 2] },
+        get board () { return currentGen },
         get: get,
         set: set,
         setDimensions: setDimensions
