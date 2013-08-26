@@ -57,7 +57,7 @@ define('life', [], function () {
             cells[1].bias === cells[2].bias) {
             return cells[0].bias;
         } else {
-            return 1;
+            return 0;
         }
     }
 
